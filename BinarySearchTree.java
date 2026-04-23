@@ -124,5 +124,41 @@ class BinarySearchTree {
         }
         find_kth_smallest(n.getRight(), k);
     }
+
+    //2.6
+    public void delete(int data){
+        if(!search(data)){
+            System.out.println("invalid input");
+            return;
+        }
+        root = delete(root, data);
+        size--;
+    }
+    public Node delete(Node n, int data){
+        if(n == null){
+            return null;
+        }
+        if(data < n.getData()){
+            n.setLeft(delete(n.getLeft(), data));
+        }else if(data > n.getData()){
+            n.setRight(delete(n.getRight(), data));
+        }else {
+            if (n.getLeft() == null && n.getRight() == null) {
+                return null;
+            } else if (n.getLeft() == null) {
+                return n.getRight();
+            } else if (n.getRight() == null) {
+                return n.getLeft();
+            } else {
+                Node temp = n.getLeft();
+                while (temp.getRight() != null) {
+                    temp = temp.getRight();
+                }
+                n.setData(temp.getData());
+                n.setLeft(delete(n.getLeft(), temp.getData()));
+            }
+        }
+        return n;
+    }
     
 }
