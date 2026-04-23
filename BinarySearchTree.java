@@ -44,5 +44,27 @@ class BinarySearchTree {
             return search(n.getRight(), data);
         }
     }
+
+    //2.2
+    public void insert(int data){
+        if(search(data)){
+            System.out.println("Invalid input");
+            return;
+        }
+        root = insert(root, data);
+        size++;
+    }
+
+    public Node insert(Node n, int data){
+        if(n == null){
+            return new Node(data,null,null);
+        }
+        if(data > n.getData()){
+            n.setRight(insert(n.getRight(), data));
+        }else if (data < n.getData()){
+            n.setLeft(insert(n.getLeft(), data));
+        }
+        return n;
+    }
     
 }
