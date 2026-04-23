@@ -25,5 +25,24 @@ class BinarySearchTree {
     public void setSize(int size){
         this.size = size;
     }
+
+    //2.1
+    public boolean search(int data){
+        return search(root, data);
+    }
+
+    public boolean search(Node n, int data){
+        if(n == null){
+            return false;
+        }
+        if(data == n.getData()) {
+            return true;
+        }
+        if(data < n.getData()){
+            return search(n.getLeft(), data);
+        }else{
+            return search(n.getRight(), data);
+        }
+    }
     
 }
