@@ -83,5 +83,18 @@ class BinarySearchTree {
             return rightHeight + 1;
         }
     }
+     //2.4
+    public void print_in_order(){
+        print_in_order(root);
+        System.out.println();
+    }
+    public void print_in_order(Node n){
+        if(n == null){
+            return;
+        }
+        print_in_order(n.getLeft());
+        System.out.print(n.getData());
+        print_in_order(n.getRight());
+    }
     
 }
