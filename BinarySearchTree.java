@@ -66,5 +66,22 @@ class BinarySearchTree {
         }
         return n;
     }
+    //2.3
+    public int height(){
+        return height(root);
+    }
+    public int height(Node n){
+        if(n == null){
+            return 0;
+        }
+        int leftHeight = height(n.getLeft());
+        int rightHeight = height(n.getRight());
+
+        if(leftHeight > rightHeight){
+            return leftHeight + 1;
+        }else {
+            return rightHeight + 1;
+        }
+    }
     
 }
