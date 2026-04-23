@@ -96,5 +96,33 @@ class BinarySearchTree {
         System.out.print(n.getData());
         print_in_order(n.getRight());
     }
+
+    //2.5
+    private int count = 0;
+    private int result = -1;
+    public int find_kth_smallest(int k){
+        if(k > size || k <= 0){
+            System.out.println("invalid input");
+            return -1;
+        }
+        count = 0;
+        result = -1;
+
+        find_kth_smallest(root, k);
+        return  result;
+    }
+    public void find_kth_smallest(Node n, int k){
+        if(n == null){
+            return;
+        }
+        find_kth_smallest(n.getLeft(), k);
+
+        count++;
+        if(count == k){
+            result = n.getData();
+            return;
+        }
+        find_kth_smallest(n.getRight(), k);
+    }
     
 }
